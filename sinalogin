@@ -1,0 +1,38 @@
+#!python3
+#coding:utf8
+'weibologin module '
+__author__ = 'shianlin'
+#引号中的中文、全大写替换成对应的
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+import time
+import sys
+import threading
+
+
+class weibologin:
+    def __int__(self):
+        pass
+
+    def login(self,id,pwd):
+        self.url="https://login.sina.com.cn/signup/signin.php?entry=sso"
+        self.browser =webdriver.Chrome()
+        browser=self.browser
+        page =browser.get(self.url)
+        username=browser.find_element_by_id('username')
+        password=browser.find_element_by_id('password')
+        username.send_keys(id)
+        password.send_keys(pwd)
+        loginBtn=browser.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[2]/form/div[2]/div/ul/li[7]/div[1]/input")
+        loginBtn.submit()
+        time.sleep(10)
+        loginBnt=browser.find_element_by_class_name("l_pdt_name")
+        loginBnt.click()
+
+id='你的ID'
+pwd='对应密码'
+
+xk = weibologin()
+xk.login(id,pwd)
